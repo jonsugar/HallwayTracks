@@ -8,8 +8,8 @@
     </p>
   </div>
   <div class="buttons">
-    <%= be_my_buddy_button(@friendship) %>
-    <%= destroy_friendship_button(@friendship) %>
-    <%= block_button(@friendship) %>
+    <%= accept_friendship_button(@friendship, current_user&.profile) %>
+    <%= destroy_friendship_button(@friendship, current_user&.profile) %>
+    <%= block_button(@friendship, current_user&.profile) %>
   </div>
 </div>
