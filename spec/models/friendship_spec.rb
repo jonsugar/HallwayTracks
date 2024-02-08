@@ -15,16 +15,16 @@ RSpec.describe Friendship do
   end
 
   describe "#create_notification" do
-    let(:friendship) { create :friendship, status: }
     subject { friendship } # create_notification is called in an after_create callback
 
+    let(:friendship) { create :friendship, status: }
     let(:notification) { Notification.find_by(notifiable: friendship) }
 
     context "when profile is following a friend" do
       let(:status) { :accepted }
 
       it "does not create a new notification" do
-        expect { subject }.to change(Notification, :count).by(0)
+        expect { subject }.not_to change(Notification, :count)
       end
     end
 
@@ -32,7 +32,7 @@ RSpec.describe Friendship do
       let(:status) { :blocked }
 
       it "does not create a new notification" do
-        expect { subject }.to change(Notification, :count).by(0)
+        expect { subject }.not_to change(Notification, :count)
       end
     end
 
