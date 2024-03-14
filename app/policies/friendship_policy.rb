@@ -14,7 +14,8 @@ class FriendshipPolicy < ApplicationPolicy
   end
 
   def show?
-    true
+    return true if my_friendship?
+    @friendship.friend == current_profile && !@friendship.blocked?
   end
 
   def create?
@@ -33,7 +34,7 @@ class FriendshipPolicy < ApplicationPolicy
   end
 
   def update?
-    @current_profile == @friendship.buddy
+    my_friendship?
   end
 
   def destroy?
@@ -42,6 +43,10 @@ class FriendshipPolicy < ApplicationPolicy
 
   def missing_params
     @friendship&.buddy.nil? || @friendship&.friend.nil? || @friendship&.status.nil?
+  end
+
+  def my_friendship?
+    @current_profile == @friendship.buddy
   end
 
   # Permissions and access for a collection of Users
