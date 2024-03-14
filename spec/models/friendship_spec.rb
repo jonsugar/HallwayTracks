@@ -64,13 +64,13 @@ RSpec.describe Friendship do
     context "with accepted friendship" do
       let(:friendship) { create :friendship, :accepted, buddy:, friend: }
 
-      it { is_expected.to eq "Xavier and Chael are friends!" }
+      it { is_expected.to eq "Xavier feels friendly towards Chael!" }
     end
 
     context "with blocked friendship" do
       let(:friendship) { create :friendship, :blocked, buddy:, friend: }
 
-      it { is_expected.to eq "Xavier and Chael are NOT friends." }
+      it { is_expected.to eq "Xavier has blocked Chael." }
     end
 
     context "with requested friendship" do

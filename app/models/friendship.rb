@@ -36,11 +36,12 @@ class Friendship < ApplicationRecord
   end
 
   def to_s
+    return "Friendship does not exist yet." unless persisted?
     case status
     when "accepted"
-      "#{buddy} and #{friend} are friends!"
+      "#{buddy} feels friendly towards #{friend}!"
     when "blocked"
-      "#{buddy} and #{friend} are NOT friends."
+      "#{buddy} has blocked #{friend}."
     when "requested"
       "#{friend} wants to be friends with #{buddy}!"
     end
