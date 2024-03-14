@@ -46,6 +46,12 @@ RSpec.describe "/friendships" do
     context "when user is signed in" do
       let(:user) { create :user }
 
+      include_examples "unauthorized access"
+    end
+
+    context "when the user is a friend" do
+      let(:user) { friendship.friend.user }
+
       it "renders a successful response" do
         get_show
         expect(response).to be_successful
