@@ -70,3 +70,5 @@ bower.json
 /yarn-error.log
 yarn-debug.log*
 .yarn-integrity
+.devcontainer/devcontainer.json
+.github/dependabot.yml
